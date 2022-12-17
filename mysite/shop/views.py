@@ -15,5 +15,10 @@ def index(request):
 
 
 def detail(request, item_id):
-    item = get_object_or_404(Item, pk=1)
+    item = get_object_or_404(Item, pk=item_id)
+    # increase likes by 1 if user clicks on button LIKE in detail.html page
+    if request.method == 'POST':
+        item.item_likes += 1
+        item.save()
+
     return render(request, 'shop/detail.html', {'item': item})

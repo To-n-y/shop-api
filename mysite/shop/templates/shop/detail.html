@@ -1,4 +1,12 @@
 <h1>{{ item.item_name }}</h1>
 <ul>
-    <p>{{ item.item_description }}</p>
+    <p>{{ item.item_description }}, {{item.item_likes}}, </p>
+    <form method="post">{% csrf_token %}
+    <button>
+        LIKE
+    </button>
+    </form>
+    <form>
+    <button> <a href="/shop/">BACK</a></button>
+</form>
 </ul>
