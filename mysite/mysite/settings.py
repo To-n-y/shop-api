@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-jiwlhayej%9c+fwyku$m6hjt+dpdc(0mvbjj3u1^312qy9q%#%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'shop.apps.ShopConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
