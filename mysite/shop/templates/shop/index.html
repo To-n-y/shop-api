@@ -1,10 +1,15 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'shop/style.css' %}">
+<link rel="stylesheet" href="{% static 'shop/style1.css' %}">
 {% if latest_list %}
     <ul>
     {% for item in latest_list %}
-        <li><a href="/shop/{{ item.item_id }}/">{{ item.item_name }}, {{item.item_id}}</a></li>
+        <li>
+            <a href="/shop/{{ item.item_id }}/">{{ item.item_name }}, {{item.item_id}}</a>
+            <div><img src="images/bgc2.jfif" alt=qwerty></div>
+
+
+        </li>
     {% endfor %}
     </ul>
 {% else %}

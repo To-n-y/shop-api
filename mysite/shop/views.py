@@ -16,9 +16,23 @@ def index(request):
 
 def detail(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
-    # increase likes by 1 if user clicks on button LIKE in detail.html page
-    if request.method == 'POST':
+    # create a list of reviews for this item sorted by rating
+    lst = item.review_set.order_by('-r_rating')
+
+    if request.method == 'POST' and request.POST.get('form_id') == "LIKE":
         item.item_likes += 1
         item.save()
 
-    return render(request, 'shop/detail.html', {'item': item})
+    elif request.method == 'POST' and request.POST.get('form_id') == "REVIEW":
+        print(request.POST)
+        item.review_set.create(r_text=request.POST.get('r_text'))
+        item.save()
+
+    elif request.method == 'POST' and request.POST.get('form_id').isdigit():
+        print(request.POST)
+        review = item.review_set.get(r_id=request.POST.get('form_id'))
+        review.r_rating += 1
+        review.save()
+        item.save()
+
+    return render(request, 'shop/detail.html', {'item': item, 'lst': lst})

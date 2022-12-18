@@ -6,8 +6,8 @@ __pycache__/
 # C extensions
 *.so
 .idea
-.mysite/shop/migrations
-.mysite/mysite/settings.py
+mysite/shop/migrations
+mysite/mysite/settings.py
 # Distribution / packaging
 .Python
 build/

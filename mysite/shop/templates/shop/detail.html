@@ -1,12 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Api.COM</title>
+</head>
+<body>
+
 <h1>{{ item.item_name }}</h1>
 <ul>
     <p>{{ item.item_description }}, {{item.item_likes}}, </p>
     <form method="post">{% csrf_token %}
-    <button>
-        LIKE
-    </button>
+        <input type="hidden" name="form_id" value="LIKE">
+        <button> LIKE </button>
     </form>
     <form>
-    <button> <a href="/shop/">BACK</a></button>
-</form>
+
+        <button><a href="/shop/">BACK</a></button>
+    </form>
+    <form method="post">{% csrf_token %}
+        <input type="hidden" name="form_id" value="REVIEW">
+        <p><b>Оставить отзыв:</b><br>
+            <input NAME="r_text" VALUE="create your review here..." type="text" size="40">
+        </p>
+        <button> SEND </button>
+    </form>
+    <p>Отзывы:</p>
+    {% for rev in lst %}
+    <form method="post">{% csrf_token %}
+        <input type="hidden" name="form_id" value={{rev.r_id}}>
+        <li>
+            <p>{{ rev.r_text }}, {{rev.r_rating}}
+                       <button> LIKE </button>
+            </p>
+        </li>
+    </form>
+
+    {% endfor %}
 </ul>
+
+</body>
+</html>
