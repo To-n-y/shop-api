@@ -6,9 +6,7 @@
     {% for item in latest_list %}
         <li>
             <a href="/shop/{{ item.item_id }}/">{{ item.item_name }}, {{item.item_id}}</a>
-            <div><img src="images/bgc2.jfif" alt=qwerty></div>
-
-
+            <div><img src='{% static "shop/images/items.webp" %}' width="100" height="100" alt={{item.item_name}} /></div>
         </li>
     {% endfor %}
     </ul>

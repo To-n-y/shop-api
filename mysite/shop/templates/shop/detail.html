@@ -5,7 +5,9 @@
     <title>Api.COM</title>
 </head>
 <body>
+{% load static %}
 
+    <div><img src='{% static "shop/images/ring.jpg" %}' width="100" height="111" alt="alternative"></div>
 <h1>{{ item.item_name }}</h1>
 <ul>
     <p>{{ item.item_description }}, {{item.item_likes}}, </p>
