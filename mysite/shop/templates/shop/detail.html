@@ -2,18 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Api.COM</title>
+    <title>myshop.com</title>
 </head>
 <body>
 {% load static %}
 
-    <div><img src='{% static "shop/images/ring.jpg" %}' width="100" height="111" alt="alternative"></div>
+<div><img src='{{item.item_image.url}}' width="100" height="100" alt={{item.item_name}}/></div>
+
 <h1>{{ item.item_name }}</h1>
 <ul>
-    <p>{{ item.item_description }}, {{item.item_likes}}, </p>
+    <p>Description: {{ item.item_description }}, Likes: {{item.item_likes}} </p>
     <form method="post">{% csrf_token %}
         <input type="hidden" name="form_id" value="LIKE">
-        <button> LIKE </button>
+        <button> LIKE</button>
     </form>
     <form>
 
@@ -24,7 +25,7 @@
         <p><b>Оставить отзыв:</b><br>
             <input NAME="r_text" VALUE="create your review here..." type="text" size="40">
         </p>
-        <button> SEND </button>
+        <button> SEND</button>
     </form>
     <p>Отзывы:</p>
     {% for rev in lst %}
@@ -32,7 +33,7 @@
         <input type="hidden" name="form_id" value={{rev.r_id}}>
         <li>
             <p>{{ rev.r_text }}, {{rev.r_rating}}
-                       <button> LIKE </button>
+                <button> LIKE</button>
             </p>
         </li>
     </form>
