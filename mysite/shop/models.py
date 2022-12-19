@@ -18,7 +18,7 @@ class Item(models.Model):
     item_date = models.DateTimeField('date published')
     item_price = models.IntegerField(default=0)
     item_description = models.CharField(max_length=200)
-    item_image = models.ImageField(upload_to='images/')
+    #item_image = models.ImageField(upload_to='images/')
     item_likes = models.IntegerField(default=0)
 
     def __str__(self):
